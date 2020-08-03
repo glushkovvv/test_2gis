@@ -1,0 +1,22 @@
+{
+    "title": "Message",
+    "type": "object",
+    "properties": {
+        "error": {
+            "title": "Error",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "Id",
+                    "type": "string"
+                },
+                "message": {
+                  "title": "Message",
+                  "type": "string"
+                }
+            },
+            "required": [ "id", "message" ]
+        },
+    "required": [ "error" ]
+    }
+}
