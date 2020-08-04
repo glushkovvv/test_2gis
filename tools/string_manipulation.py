@@ -53,8 +53,7 @@ def get_alphabet(lang_uses: str = 'all', char_size: str = 'all') -> str:
             alphabet = ascii_uppercase + ru_symbol_upper
         else:
             alphabet = ''
-
-    if lang_uses == 'en':
+    elif lang_uses == 'en':
         if char_size == 'all':
             alphabet = ascii_letters
         elif char_size == 'lower':
@@ -62,8 +61,8 @@ def get_alphabet(lang_uses: str = 'all', char_size: str = 'all') -> str:
         elif char_size == 'upper':
             alphabet = ascii_uppercase
         else:
-            alphabet = ''
-    if lang_uses == 'ru':
+            alphabet=''
+    elif lang_uses == 'ru':
         ru_symbol_lower = ''
         ru_symbol_upper = ''
         if char_size == 'all':
@@ -88,6 +87,8 @@ def get_alphabet(lang_uses: str = 'all', char_size: str = 'all') -> str:
             alphabet = ru_symbol_upper
         else:
             alphabet = ''
+    else:
+        alphabet = ''
 
     return alphabet
 
@@ -106,10 +107,12 @@ def generator_string(lang_uses: str = 'all', char_count: int = 1,
     random_string = ''.join(choices(get_alphabet(lang_uses=lang_uses, char_size=char_size), k=char_count))
     return random_string
 
-def get_space_and_end_character() -> list:
-    return [ 0, '',' ','\t', '\r','\n', '\r\n']
 
-def get_special_character(count_chars: int=2, len_list: int=1) -> list:
+def get_space_and_end_character() -> list:
+    return [0, '',' ','\t', '\r','\n', '\r\n']
+
+
+def get_special_character(count_chars: int = 2, len_list: int =1) -> list:
     alphabet_char ="~`@#№$%^&*()-_+={[]};:'\"\\|/,<.>?"
     mix_count = len(alphabet_char) ** count_chars
     if 0 < len_list <= mix_count:
@@ -117,6 +120,7 @@ def get_special_character(count_chars: int=2, len_list: int=1) -> list:
     else:
         items = sample([''.join(x) for x in product(alphabet_char, repeat=count_chars)], mix_count)
     return items
+
 
 def get_valid_country_code() -> list:
     """Возвращает список возможных кодов стран

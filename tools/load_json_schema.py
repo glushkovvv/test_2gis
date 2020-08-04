@@ -17,6 +17,7 @@ Tools load json file
 
 import json
 
+
 def load_json_schema(filename=None):
     """ Loads the given schema file """
 

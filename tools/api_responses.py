@@ -20,6 +20,14 @@ from json import loads
 
 
 def get_response(url, params):
+    """Send request and return response
+
+    :param url: EndPoint URL
+    :type url: str
+    :param params: Parameters for send
+    :type params: dict
+    :return:
+    """
     request_headers = {
         "User-Agent": "2GIS pytest 0.1",
         "Accept": "*/*",
@@ -36,6 +44,16 @@ def get_response(url, params):
 
 
 def count_real_page(items, items_count, api_url):
+    """Подсчет реального количества страниц
+
+    :param items: Response body
+    :type items: dict
+    :param items_count: Count element per page
+    :param api_url: EndPoint URL
+    :type api_url: str
+    :return:
+    """
+
     page = 0
     while items:
         page += 1
