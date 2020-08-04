@@ -26,7 +26,6 @@ def get_alphabet(lang_uses: str = 'all', char_size: str = 'all') -> str:
     :return: Возвращает алфавит в виде сроки с задаными параметрами
     """
 
-    alphabet = ''
     if lang_uses == 'all':
         ru_symbol_lower = ''
         ru_symbol_upper = ''
@@ -94,12 +93,15 @@ def get_alphabet(lang_uses: str = 'all', char_size: str = 'all') -> str:
 
 def generator_string(lang_uses: str = 'all', char_count: int = 1,
                      char_size: str = 'lower') -> str:
-    """
+    """Generator string
 
-    :param lang_uses:
-    :param char_count:
-    :param char_size:
-    :return:
+    :param lang_uses: набор символов
+    :type lang_uses: str
+    :param char_count: сколько символов отдать
+    :type char_count: int
+    :param char_size: размер символов
+    :type char_size: str
+    :return: str
     """
 
     random_string = ''.join(choices(get_alphabet(lang_uses=lang_uses, char_size=char_size), k=char_count))
@@ -138,6 +140,7 @@ def get_not_valid_country_code(lang_uses: str = 'en',
     Рекомендую использовать для +меньше 5.
     Степень от количества элементов в алфавите. 
 
+    :param char_size:
     :param lang_uses: Символы какого языка использовать. По умолчанию 'en'
     :type lang_uses: str
     :param len_list: Размер отдаваемого списка.
