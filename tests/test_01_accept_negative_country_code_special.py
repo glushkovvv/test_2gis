@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 test_01_accept_negative_country_code_special
 ~~~~~~~~~~~~~~

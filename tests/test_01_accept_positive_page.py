@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 test_01_accept_positive_page
 ~~~~~~~~~~~~~~
