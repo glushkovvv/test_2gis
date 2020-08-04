@@ -1,5 +1,21 @@
+"""
+load_json_schema
+~~~~~~~~~~~~~~
+
+The 2GIS API Test
+Tools load json file
+
+:author: Vadim Glushkov
+:copyright: Copyright 2019, The2GIS API Test"
+:license: MIT
+:version: 1.0.0
+:maintainer: Vadim Glushkov
+:email: plussg@yandex.ru
+:status: Development
+"""
+
+
 import json
-from jsonschema import Draft7Validator, SchemaError
 
 def load_json_schema(filename=None):
     """ Loads the given schema file """
@@ -9,10 +25,5 @@ def load_json_schema(filename=None):
 
     with open(filename) as schema_file:
         schema = json.loads(schema_file.read())
-
-    # try:
-    #     Draft7Validator.check_schema(schema)
-    # except SchemaError as schemaError:
-    #     print(schemaError)
 
     return schema

@@ -43,7 +43,6 @@ def test_13_accept_negative_country_upper_latin_one_char(setup_option, country_c
     :return:
     """
 
-
     api_url = setup_option['site_url']
     setup_params = {
         "country_code": country_code,

@@ -24,6 +24,7 @@ from tools.string_manipulation import get_not_valid_country_code
 from tools.api_responses import get_response
 from tools.load_json_schema import load_json_schema
 
+
 @allure.epic("Негативные тесты API")
 @allure.suite("Фильтрация по коду страны. Строчные латинские символы.")
 @allure.title("Проверка ответов при передачи в качестве параметра code_country одного латинского символа")

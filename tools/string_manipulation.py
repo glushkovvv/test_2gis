@@ -1,4 +1,21 @@
-from random import random, choices, sample
+"""
+load_json_schema
+~~~~~~~~~~~~~~
+
+The 2GIS API Test
+Tools for string manipulation
+
+:author: Vadim Glushkov
+:copyright: Copyright 2019, The2GIS API Test"
+:license: MIT
+:version: 1.0.0
+:maintainer: Vadim Glushkov
+:email: plussg@yandex.ru
+:status: Development
+"""
+
+
+from random import choices, sample
 from string import ascii_letters, ascii_lowercase, ascii_uppercase
 from itertools import product
 
@@ -9,6 +26,7 @@ def get_alphabet(lang_uses: str = 'all', char_size: str = 'all') -> str:
     :param char_size: Размер символа, принмает значение all, lower, upper
     :return: Возвращает алфавит в виде сроки с задаными параметрами
     """
+
     alphabet = ''
     if lang_uses == 'all':
         ru_symbol_lower = ''
@@ -70,7 +88,9 @@ def get_alphabet(lang_uses: str = 'all', char_size: str = 'all') -> str:
             alphabet = ru_symbol_upper
         else:
             alphabet = ''
+
     return alphabet
+
 
 def generator_string(lang_uses: str = 'all', char_count: int = 1,
                      char_size: str = 'lower') -> str:
