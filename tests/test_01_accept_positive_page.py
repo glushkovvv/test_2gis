@@ -14,19 +14,21 @@ Check positive pages
 :status: Development
 """
 
-import pytest
-import allure
+
 from json import loads
 from os.path import join, dirname
+import pytest
+import allure
 from jsonschema import Draft7Validator
 from tools.string_manipulation import get_valid_country_code
 from tools.api_responses import get_response, count_real_page
 from tools.load_json_schema import load_json_schema
 
+
 @allure.epic("Позитивные тесты API")
 @allure.suite("Страницы. Проверка количества страниц.")
 @allure.title("Сравнение реального количества страниц с вычисляемым")
-@pytest.mark.parametrize("items_count", [ 5, 10, 15 ])
+@pytest.mark.parametrize("items_count", [5, 10, 15])
 def test_01_positive_count_pages(setup_option, items_count):
     """Проверка вычисляемого количества страниц и получаемого в результате запросов.
 
@@ -56,9 +58,9 @@ def test_01_positive_count_pages(setup_option, items_count):
 
 
 @allure.epic("Позитивные тесты API.")
-@allure.suite("Коды стран")
-@allure.title("Сравнение выдаваемых кодов стран с разрешенными")
-@pytest.mark.parametrize("items_count", [ 5, 10, 15 ])
+@allure.suite("Страницы. Коды стран.")
+@allure.title("Сравнение выдаваемых кодов стран с разрешенными.")
+@pytest.mark.parametrize("items_count", [5, 10, 15])
 def test_02_positive_pages_check_country(setup_option, items_count):
     """Просматриваем наличие на страницах только разрешенных кодов стран
 
@@ -95,7 +97,7 @@ def test_02_positive_pages_check_country(setup_option, items_count):
 
 @allure.epic("Позитивные тесты API.")
 @allure.suite("Страницы. Проверка соответствие json ответов эталонной json схеме")
-@allure.title("Проверям соответсвие схеме постраничную выдачу для кол-ва элементов на страницу 5,10,15")
+@allure.title("Проверям соответсвие схеме постраничную выдачу для кол-ва элементов на страницу 5,10,15.")
 @pytest.mark.parametrize("items_count", [5, 10, 15])
 def test_03_positive_pages_check_schemas(setup_option, items_count):
     """Проверка соответствия json схеме получаемых ответов от API
@@ -134,8 +136,8 @@ def test_03_positive_pages_check_schemas(setup_option, items_count):
 
 
 @allure.epic("Позитивные тесты API.")
-@allure.suite("Страницы. Проверка на наличие дубликатов на страницах")
-@allure.title("Проверям на наличие дубликатов постраничную выдачу для кол-ва элементов на страницу 5,10,15")
+@allure.suite("Страницы. Проверка на наличие дубликатов на страницах.")
+@allure.title("Проверям на наличие дубликатов постраничную выдачу для кол-ва элементов на страницу 5,10,15.")
 @pytest.mark.parametrize("items_count", [5, 10, 15])
 def test_04_positive_pages_first_duplicate(setup_option, items_count):
     """Проверка на наличие дубликатов при пространичных запросах
@@ -158,8 +160,8 @@ def test_04_positive_pages_first_duplicate(setup_option, items_count):
 
     pages = count_real_page(content_json["items"], items_count, api_url)
     all_items = []
-    check_dub = True
-    error_message = f"""Дубликаты:\r\n"""
+    check_dublicate = True
+    error_message = """Дубликаты:\r\n"""
 
     for page in range(1, pages + 1):
         page_params = {
@@ -170,10 +172,10 @@ def test_04_positive_pages_first_duplicate(setup_option, items_count):
         content_json = loads(api_response.content.decode('utf-8'))
         for item in content_json["items"]:
             if item in all_items:
-                check_dub = False
+                check_dublicate = False
                 error_message += f"""EndPoint: {api_response.url}\r\n"""
-                error_message += f"""На странице {page} обнаружен дубликат\r\n"""
+                error_message += f"""На странице {page} обнаружен дубликат\r\n!!!"""
                 error_message += f"""{item}\r\n"""
             else:
                 all_items.append(item)
-    assert check_dub, error_message
+    assert check_dublicate, error_message

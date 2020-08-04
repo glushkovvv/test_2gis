@@ -1,5 +1,5 @@
 """
-test_01_accept_negative_country_code
+test_01_accept_negative_country_code_lower
 ~~~~~~~~~~~~~~
 
 The 2GIS API Test
@@ -14,10 +14,11 @@ Check negative country_code
 :status: Development
 """
 
-import pytest
-import allure
+
 import json
 from os.path import join, dirname
+import pytest
+import allure
 from jsonschema import Draft7Validator
 from tools.string_manipulation import get_not_valid_country_code
 from tools.api_responses import get_response

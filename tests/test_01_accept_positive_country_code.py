@@ -14,17 +14,19 @@ Check positive country_code
 :status: Development
 """
 
-import pytest
+
 import json
-import allure
 from os.path import join, dirname
+import pytest
+import allure
 from jsonschema import Draft7Validator
 from tools.string_manipulation import get_valid_country_code
 from tools.api_responses import get_response
 from tools.load_json_schema import load_json_schema
 
-@allure.epic("Позитивные тесты API")
-@allure.suite("Код страны. Проверка количества страниц.")
+
+@allure.epic("Позитивные тесты API.")
+@allure.suite("Фильтрация по коду страны. Проверка количества страниц.")
 @allure.title("Проверка, что выборка при фильтрации по коду страны не содержит других кодов стран")
 @pytest.mark.parametrize("country_code", get_valid_country_code())
 def test_01_accept_positive_response(setup_option, country_code):
@@ -48,13 +50,13 @@ def test_01_accept_positive_response(setup_option, country_code):
     Status: {api_response.status_code}
     Body: {json_content}
     """
-    assert api_response.status_code == 200, f"""Статус ответа {api_response.status_code} != 200\r\n""" + response_message
+    assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
 
     relative_path = join('../datasets', 'json_valid_schemas_country_code.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
     check = Draft7Validator(schema=schema).is_valid(json_content)
-    assert check, f"""Ошибка при валидации схемы запроса кода страны {country_code}\r\n""" + response_message
+    assert check, f"""Ошибка при валидации json схемы {country_code}\r\n""" + response_message
 
     for item in json_content["items"]:
         assert item["country"]["code"] == country_code, \
