@@ -320,7 +320,7 @@ def test_20_accept_negative_country_upper_mix_three_chars(setup_option, country_
 @pytest.mark.parametrize("country_code",
                          get_not_valid_country_code(lang_uses='en',
                                                     char_size='all',
-                                                    count_ch   ars=2,
+                                                    count_chars=2,
                                                     len_list=10))
 def test_21_accept_negative_country_mix_latin_two_chars(setup_option, country_code):
     """Проверка ответов API при передачи в качестве кода страныдвух заглавных или строчных латинских символов
