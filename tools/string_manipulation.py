@@ -14,7 +14,6 @@ Tools for string manipulation
 :status: Development
 """
 
-
 from random import choices, sample
 from string import ascii_letters, ascii_lowercase, ascii_uppercase
 from itertools import product
@@ -61,7 +60,7 @@ def get_alphabet(lang_uses: str = 'all', char_size: str = 'all') -> str:
         elif char_size == 'upper':
             alphabet = ascii_uppercase
         else:
-            alphabet=''
+            alphabet = ''
     elif lang_uses == 'ru':
         ru_symbol_lower = ''
         ru_symbol_upper = ''
@@ -103,17 +102,16 @@ def generator_string(lang_uses: str = 'all', char_count: int = 1,
     :return:
     """
 
-
     random_string = ''.join(choices(get_alphabet(lang_uses=lang_uses, char_size=char_size), k=char_count))
     return random_string
 
 
 def get_space_and_end_character() -> list:
-    return [0, '',' ','\t', '\r','\n', '\r\n']
+    return [0, '', ' ', '\t', '\r', '\n', '\r\n']
 
 
-def get_special_character(count_chars: int = 2, len_list: int =1) -> list:
-    alphabet_char ="~`@#№$%^&*()-_+={[]};:'\"\\|/,<.>?"
+def get_special_character(count_chars: int = 2, len_list: int = 1) -> list:
+    alphabet_char = "~`@#№$%^&*()-_+={[]};:'\"\\|/,<.>?"
     mix_count = len(alphabet_char) ** count_chars
     if 0 < len_list <= mix_count:
         items = sample([''.join(x) for x in product(alphabet_char, repeat=count_chars)], len_list)
@@ -131,12 +129,11 @@ def get_valid_country_code() -> list:
     return ['ru', 'kg', 'kz', 'cz']
 
 
-def get_not_valid_country_code(lang_uses: str='en',
+def get_not_valid_country_code(lang_uses: str = 'en',
                                len_list: int = 1,
-                               count_chars: int =2,
+                               count_chars: int = 2,
                                char_size: str = 'lower') -> list:
-    """
-    Получить список не валидных двухсимвольных строк.
+    """Получить список не валидных двухсимвольных строк.
     В основе генерации используется декартовое произведение.
     Рекомендую использовать для +меньше 5.
     Степень от количества элементов в алфавите. 
@@ -147,7 +144,7 @@ def get_not_valid_country_code(lang_uses: str='en',
     :type len_list: int
     :param count_chars: Длина одного элемента в списке
     :type count_chars: int
-    :
+
     :return: list, Список из символов языка 
     """
 
@@ -160,19 +157,19 @@ def get_not_valid_country_code(lang_uses: str='en',
         mix_count = (alphabet_len ** count_chars) - len(valid_country_code)
     else:
         mix_count = (alphabet_len ** count_chars)
-    
+
     # Генерация списка
     if len_list is None:
         items = sample(
             [''.join(x) for x in product(alphabet_char, repeat=count_chars)
-                             if ''.join(x) not in valid_country_code], 1)
+             if ''.join(x) not in valid_country_code], 1)
     elif len_list >= mix_count:
         items = sample([''.join(x) for x in product(alphabet_char, repeat=count_chars)
-                             if ''.join(x) not in valid_country_code], mix_count)
+                        if ''.join(x) not in valid_country_code], mix_count)
     elif 0 < len_list < mix_count:
         items = sample([''.join(x) for x in product(alphabet_char, repeat=count_chars)
-                             if ''.join(x) not in valid_country_code], len_list)
+                        if ''.join(x) not in valid_country_code], len_list)
     else:
         items = sample([''.join(x) for x in product(alphabet_char, repeat=count_chars)
-                       if ''.join(x) not in valid_country_code], 1)
+                        if ''.join(x) not in valid_country_code], 1)
     return items
