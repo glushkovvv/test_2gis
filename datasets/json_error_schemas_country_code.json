@@ -1,5 +1,5 @@
 {
-    "title": "Message",
+    "title": "Root",
     "type": "object",
     "properties": {
         "error": {
@@ -16,7 +16,7 @@
                 }
             },
             "required": [ "id", "message" ]
-        },
+        }
+    },
     "required": [ "error" ]
-    }
 }

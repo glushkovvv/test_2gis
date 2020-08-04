@@ -16,13 +16,16 @@ Check positive country_code
 
 import pytest
 import json
+import allure
 from os.path import join, dirname
 from jsonschema import Draft7Validator
 from tools.string_manipulation import get_valid_country_code
 from tools.api_responses import get_response
 from tools.load_json_schema import load_json_schema
 
-
+@allure.epic("Позитивные тесты API")
+@allure.suite("Код страны. Проверка количества страниц.")
+@allure.title("Проверка, что выборка при фильтрации по коду страны не содержит других кодов стран")
 @pytest.mark.parametrize("country_code", get_valid_country_code())
 def test_01_accept_positive_response(setup_option, country_code):
     """Проверка фильтрации при разрешенных кодах стран

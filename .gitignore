@@ -22,6 +22,8 @@ lib64/
 parts/
 sdist/
 var/
+allure-reports/
+allure-results/
 *.egg-info/
 .installed.cfg
 *.egg

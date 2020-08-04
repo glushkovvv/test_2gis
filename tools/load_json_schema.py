@@ -10,9 +10,9 @@ def load_json_schema(filename=None):
     with open(filename) as schema_file:
         schema = json.loads(schema_file.read())
 
-    try:
-        Draft7Validator.check_schema(schema)
-    except SchemaError as schemaError:
-        print(schemaError)
+    # try:
+    #     Draft7Validator.check_schema(schema)
+    # except SchemaError as schemaError:
+    #     print(schemaError)
 
     return schema

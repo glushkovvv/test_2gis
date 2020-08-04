@@ -15,6 +15,7 @@ Check positive pages
 """
 
 import pytest
+import allure
 from json import loads
 from os.path import join, dirname
 from jsonschema import Draft7Validator
@@ -22,7 +23,9 @@ from tools.string_manipulation import get_valid_country_code
 from tools.api_responses import get_response, count_real_page
 from tools.load_json_schema import load_json_schema
 
-
+@allure.epic("Позитивные тесты API")
+@allure.suite("Страницы. Проверка количества страниц.")
+@allure.title("Сравнение реального количества страниц с вычисляемым")
 @pytest.mark.parametrize("items_count", [ 5, 10, 15 ])
 def test_01_positive_count_pages(setup_option, items_count):
     """Проверка вычисляемого количества страниц и получаемого в результате запросов.
@@ -52,9 +55,12 @@ def test_01_positive_count_pages(setup_option, items_count):
             Возможно дублирование элементов или неправильное указание для ключа total"""
 
 
+@allure.epic("Позитивные тесты API.")
+@allure.suite("Коды стран")
+@allure.title("Сравнение выдаваемых кодов стран с разрешенными")
 @pytest.mark.parametrize("items_count", [ 5, 10, 15 ])
 def test_02_positive_pages_check_country(setup_option, items_count):
-    """Просматриваем наличие на страницах только разрешенных стран
+    """Просматриваем наличие на страницах только разрешенных кодов стран
 
     :param setup_option: Установочные параметры
     :type setup_option: dict
@@ -87,6 +93,9 @@ def test_02_positive_pages_check_country(setup_option, items_count):
                     попался элемент с кодом страны '{item['country']['code']}'"""
 
 
+@allure.epic("Позитивные тесты API.")
+@allure.suite("Страницы. Проверка соответствие json ответов эталонной json схеме")
+@allure.title("Проверям соответсвие схеме постраничную выдачу для кол-ва элементов на страницу 5,10,15")
 @pytest.mark.parametrize("items_count", [5, 10, 15])
 def test_03_positive_pages_check_schemas(setup_option, items_count):
     """Проверка соответствия json схеме получаемых ответов от API
@@ -124,6 +133,9 @@ def test_03_positive_pages_check_schemas(setup_option, items_count):
                         не проходит валидация схемы"""
 
 
+@allure.epic("Позитивные тесты API.")
+@allure.suite("Страницы. Проверка на наличие дубликатов на страницах")
+@allure.title("Проверям на наличие дубликатов постраничную выдачу для кол-ва элементов на страницу 5,10,15")
 @pytest.mark.parametrize("items_count", [5, 10, 15])
 def test_04_positive_pages_first_duplicate(setup_option, items_count):
     """Проверка на наличие дубликатов при пространичных запросах

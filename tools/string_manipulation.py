@@ -87,7 +87,7 @@ def generator_string(lang_uses: str = 'all', char_count: int = 1,
     return random_string
 
 def get_space_and_end_character() -> list:
-    return [ None, 0, '',' ','\t', '\r','\n', '\r\n']
+    return [ 0, '',' ','\t', '\r','\n', '\r\n']
 
 def get_special_character(count_chars: int=2, len_list: int=1) -> list:
     alphabet_char ="~`@#№$%^&*()-_+={[]};:'\"\\|/,<.>?"
