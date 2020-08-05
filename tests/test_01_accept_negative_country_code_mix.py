@@ -56,7 +56,7 @@ def test_25_accept_negative_country_mix_mix_two_chars(setup_option, country_code
     Body: {json_content}
     """
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
-    relative_path = join('../datasets', 'json_error_schemas_country_code.json')
+    relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
     check = Draft7Validator(schema=schema).is_valid(json_content)
@@ -93,7 +93,7 @@ def test_26_accept_negative_country_mix_mix_three_chars(setup_option, country_co
     Body: {json_content}
     """
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
-    relative_path = join('../datasets', 'json_error_schemas_country_code.json')
+    relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
     check = Draft7Validator(schema=schema).is_valid(json_content)

@@ -52,7 +52,7 @@ def test_01_accept_negative_space_char(setup_option, country_code):
     Body: {json_content}
     """
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
-    relative_path = join('../datasets', 'json_error_schemas_country_code.json')
+    relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
     check = Draft7Validator(schema=schema).is_valid(json_content)
@@ -86,7 +86,7 @@ def test_02_accept_negative_special_one_char(setup_option, country_code):
     Body: {json_content}
     """
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
-    relative_path = join('../datasets', 'json_error_schemas_country_code.json')
+    relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
     check = Draft7Validator(schema=schema).is_valid(json_content)
@@ -120,7 +120,7 @@ def test_03_accept_negative_special_two_char(setup_option, country_code):
     Body: {json_content}
     """
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
-    relative_path = join('../datasets', 'json_error_schemas_country_code.json')
+    relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
     check = Draft7Validator(schema=schema).is_valid(json_content)
@@ -154,7 +154,7 @@ def test_04_accept_negative_special_three_char(setup_option, country_code):
     Body: {json_content}
     """
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
-    relative_path = join('../datasets', 'json_error_schemas_country_code.json')
+    relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
     check = Draft7Validator(schema=schema).is_valid(json_content)

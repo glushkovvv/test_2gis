@@ -128,7 +128,7 @@ def test_03_positive_pages_check_schemas(setup_option, items_count):
         }
         api_response = get_response(api_url, page_params)
         json_content = loads(api_response.content.decode('utf-8'))
-        relative_path = join('../datasets', 'json_valid_schemas_country_code.json')
+        relative_path = join('../datasets', 'json_valid_schemas_for_test.json')
         filename = join(dirname(__file__), relative_path)
         schema = load_json_schema(filename=filename)
         check = Draft7Validator(schema=schema).is_valid(json_content)

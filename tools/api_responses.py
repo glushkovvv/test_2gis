@@ -31,9 +31,9 @@ def get_response(url, params):
     """
     request_headers = {
         "User-Agent": "2GIS pytest 0.1",
-        "Accept": "*/*",
+        "Accept": "application/json, */*; q=0.01",
         "Connection": "keep-alive",
-        "Accept-Charset": "utf-8",
+        "Accept-Charset": "UTF-8",
         "Accept-Encoding": "compress, gzip",
         "Accept-Language": "ru, en-gb;q=0.8, en;q=0.7"
     }

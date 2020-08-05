@@ -53,7 +53,7 @@ def test_01_accept_positive_response(setup_option, country_code):
     """
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
 
-    relative_path = join('../datasets', 'json_valid_schemas_country_code.json')
+    relative_path = join('../datasets', 'json_valid_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
     check = Draft7Validator(schema=schema).is_valid(json_content)
