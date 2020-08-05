@@ -73,7 +73,7 @@ def test_01_smoke_valid_json_schema(setup_option, json_params):
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
     check = Draft7Validator(schema=schema).is_valid(json_content)
-    assert check, f"""Контент ответа не соответсвует json схеме\r\n""" + testing_message
+    assert check, """Контент ответа не соответсвует json схеме\r\n""" + testing_message
 
 
 @allure.epic("Смок тесты API")
@@ -93,7 +93,7 @@ def test_01_smoke_not_empty(setup_option, json_params):
         check = True
     else:
         check = False
-    assert check, f"""Нет необходимых элементов в ответе\r\n""" + testing_message
+    assert check, """Нет необходимых элементов в ответе\r\n""" + testing_message
 
 
 @allure.epic("Смок тесты API")
@@ -119,4 +119,4 @@ def test_01_smoke_required_header(setup_option, json_params):
         check = True
     else:
         check = False
-    assert check, f"""Ошибка при валидации json ответов\r\n""" + testing_message
+    assert check, """Требуемый заголовок не найден\r\n""" + testing_message
