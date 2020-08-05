@@ -25,8 +25,8 @@ from tools.load_json_schema import load_json_schema
 
 
 @allure.epic("Смок тесты API")
-@allure.suite("Смок тестирование статусов ответов")
-@allure.title("Статус ответа при нечётком поиске, при фильтрации по коду страны, при постраничной разбивке")
+@allure.suite("Смок тестирование статусов ответов.")
+@allure.title("Статус ответа. Нечёткий поиск. Фильтрация по коду страны. Постраничная разбивка")
 @pytest.mark.parametrize("json_params", [{"q": "Влад"},
                                          {"country_code": "ru"},
                                          {"page": 1, "page_size": 5}])
@@ -52,7 +52,7 @@ def test_01_smoke_status_code(setup_option, json_params):
 
 @allure.epic("Смок тесты API")
 @allure.suite("Смок тестирование - соответствие ответа json схеме ")
-@allure.title("Валидность ответа при нечётком поиске. При фильтрации по коду страны. При постраничной разбивке")
+@allure.title("Соответствие ответа json схеме. Нечёткий поиск. Фильтрация по коду страны. Постраничная разбивка.")
 @pytest.mark.parametrize("json_params", [{"q": "Влад"},
                                          {"country_code": "ru"},
                                          {"page": 1, "page_size": 5}])
@@ -81,12 +81,21 @@ def test_01_smoke_valid_json_schema(setup_option, json_params):
 
 
 @allure.epic("Смок тесты API")
-@allure.suite("Смок тестирование - в ответе должны быть элементы")
-@allure.title("Статус ответа при нечётком поиске. При фильтрации по коду страны. При постраничной разбивке")
+@allure.suite("Смок тестирование - в ответе должны быть элементы/")
+@allure.title("Наличие элементов в ответе. Нечёткий поиск. Фильтрация по коду страны. Постраничная разбивка.")
 @pytest.mark.parametrize("json_params", [{"q": "Влад"},
                                          {"country_code": "ru"},
                                          {"page": 1, "page_size": 5}])
 def test_01_smoke_not_empty(setup_option, json_params):
+    """
+    Проверка на наличие в ответе элементов
+    :param setup_option: Установочные параметры
+    :type setup_option: dict
+    :param json_params: Параметры запроса
+    :type json_params: dict
+    :return:
+    """
+
     api_url = setup_option['site_url']
     request_params = json_params
     api_response = get_response(api_url, request_params)
@@ -103,14 +112,14 @@ def test_01_smoke_not_empty(setup_option, json_params):
 
 
 @allure.epic("Смок тесты API")
-@allure.suite("Смок тестирование - загловок Content-Type")
-@allure.title("Значение Content-Type при нечётком поиске. При фильтрации по коду страны. При постраничной разбивке")
+@allure.suite("Смок тестирование - загловок Content-Type.")
+@allure.title("Значение Content-Type. Нечёткий поиск. Фильтрация по коду страны. Постраничная разбивка.")
 @pytest.mark.parametrize("json_params", [{"q": "Влад"},
                                          {"country_code": "ru"},
                                          {"page": 1, "page_size": 5}])
 def test_01_smoke_required_header(setup_option, json_params):
     """
-    Проверяем, что возвращаемый заголовок Content-Type от сервера правильный application/json; charset=utf-8
+    Проверяем, что возвращаемый заголовок Content-Type от сервера правильный (application/json; charset=utf-8)
     :param setup_option: Установочные параметры
     :type: dict
     :param json_params: Параметры запроса
