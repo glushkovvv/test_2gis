@@ -21,8 +21,8 @@ from json import loads
 
 
 def get_response(url, params):
-    """Send request and return response
-
+    """
+    Send request and return response
     :param url: EndPoint URL
     :type url: str
     :param params: Parameters for send
@@ -45,8 +45,8 @@ def get_response(url, params):
 
 
 def count_real_page(items, items_count, api_url):
-    """Подсчет реального количества страниц
-
+    """
+    Подсчет реального количества страниц
     :param items: Response body
     :type items: dict
     :param items_count: Count element per page

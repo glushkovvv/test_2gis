@@ -4,7 +4,7 @@ test_01_smoke_search
 ~~~~~~~~~~~~~~
 
 The 2GIS API Test
-Check negative country_code
+Fast smoke test
 
 :author: Vadim Glushkov
 :copyright: Copyright 2019, The2GIS API Test"
@@ -27,7 +27,9 @@ from tools.load_json_schema import load_json_schema
 @allure.epic("Смок тесты API")
 @allure.suite("Смок тестирование статусов ответов")
 @allure.title("Статус ответа при нечётком поиске, при фильтрации по коду страны, при постраничной разбивке")
-@pytest.mark.parametrize("json_params", [{"q": "Влад"}, {"country_code": "ru"}, {"page": 1, "page_size": 5}])
+@pytest.mark.parametrize("json_params", [{"q": "Влад"},
+                                         {"country_code": "ru"},
+                                         {"page": 1, "page_size": 5}])
 def test_01_smoke_status_code(setup_option, json_params):
     """
     Проверяем статусы ответов сервера
@@ -41,17 +43,19 @@ def test_01_smoke_status_code(setup_option, json_params):
     api_url = setup_option['site_url']
     request_params = json_params
     api_response = get_response(api_url, request_params)
-    testing_message = f"""EndPoint: {api_response.url}
-    Status: {api_response.status_code}
-    Headers: {api_response.headers}
-    Content: {api_response.content}"""
+    testing_message = (f"  EndPoint: {api_response.url}\n"
+                       f"  Status:   {api_response.status_code}\n"
+                       f"  Headers:  {api_response.headers}\n"
+                       f"  Content:  {api_response.content}\n")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + testing_message
 
 
 @allure.epic("Смок тесты API")
 @allure.suite("Смок тестирование - соответствие ответа json схеме ")
 @allure.title("Валидность ответа при нечётком поиске. При фильтрации по коду страны. При постраничной разбивке")
-@pytest.mark.parametrize("json_params", [{"q": "Влад"}, {"country_code": "ru"}, {"page": 1, "page_size": 5}])
+@pytest.mark.parametrize("json_params", [{"q": "Влад"},
+                                         {"country_code": "ru"},
+                                         {"page": 1, "page_size": 5}])
 def test_01_smoke_valid_json_schema(setup_option, json_params):
     """
     Валидация тела ответа по правилам Draft7Validator (структура, имена ключей, тип значение)
@@ -65,10 +69,10 @@ def test_01_smoke_valid_json_schema(setup_option, json_params):
     request_params = json_params
     api_response = get_response(api_url, request_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    testing_message = f"""EndPoint: {api_response.url}
-    Status: {api_response.status_code}
-    Headers: {api_response.headers}
-    Content: {api_response.content}"""
+    testing_message = (f"  EndPoint: {api_response.url}\n"
+                       f"  Status: {api_response.status_code}\n"
+                       f"  Headers: {api_response.headers}\n"
+                       f"  Content: {api_response.content}")
     relative_path = join('../datasets', 'json_valid_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
@@ -79,16 +83,18 @@ def test_01_smoke_valid_json_schema(setup_option, json_params):
 @allure.epic("Смок тесты API")
 @allure.suite("Смок тестирование - в ответе должны быть элементы")
 @allure.title("Статус ответа при нечётком поиске. При фильтрации по коду страны. При постраничной разбивке")
-@pytest.mark.parametrize("json_params", [{"q": "Влад"}, {"country_code": "ru"}, {"page": 1, "page_size": 5}])
+@pytest.mark.parametrize("json_params", [{"q": "Влад"},
+                                         {"country_code": "ru"},
+                                         {"page": 1, "page_size": 5}])
 def test_01_smoke_not_empty(setup_option, json_params):
     api_url = setup_option['site_url']
     request_params = json_params
     api_response = get_response(api_url, request_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    testing_message = f"""EndPoint: {api_response.url}
-    Status: {api_response.status_code}
-    Headers: {api_response.headers}
-    Content: {api_response.content}"""
+    testing_message = (f"  EndPoint: {api_response.url}\n"
+                       f"  Status:   {api_response.status_code}\n"
+                       f"  Headers:  {api_response.headers}\n"
+                       f"  Content:  {api_response.content}")
     if json_content.get("items"):
         check = True
     else:
@@ -99,7 +105,9 @@ def test_01_smoke_not_empty(setup_option, json_params):
 @allure.epic("Смок тесты API")
 @allure.suite("Смок тестирование - загловок Content-Type")
 @allure.title("Значение Content-Type при нечётком поиске. При фильтрации по коду страны. При постраничной разбивке")
-@pytest.mark.parametrize("json_params", [{"q": "Влад"}, {"country_code": "ru"}, {"page": 1, "page_size": 5}])
+@pytest.mark.parametrize("json_params", [{"q": "Влад"},
+                                         {"country_code": "ru"},
+                                         {"page": 1, "page_size": 5}])
 def test_01_smoke_required_header(setup_option, json_params):
     """
     Проверяем, что возвращаемый заголовок Content-Type от сервера правильный application/json; charset=utf-8
@@ -112,9 +120,9 @@ def test_01_smoke_required_header(setup_option, json_params):
     api_url = setup_option['site_url']
     request_params = json_params
     api_response = get_response(api_url, request_params)
-    testing_message = f"""EndPoint: {api_response.url}
-    Status: {api_response.status_code}
-    Headers: {api_response.headers}"""
+    testing_message = (f"  EndPoint: {api_response.url}\n"
+                       f"  Status:   {api_response.status_code}\n"
+                       f"  Headers:  {api_response.headers}")
     if api_response.headers.get("Content-Type").lower() == "application/json; charset=utf-8":
         check = True
     else:
