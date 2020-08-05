@@ -31,7 +31,8 @@ from tools.load_json_schema import load_json_schema
 @allure.title("Проверка, что выборка при фильтрации по коду страны не содержит других кодов стран")
 @pytest.mark.parametrize("country_code", get_valid_country_code())
 def test_01_accept_positive_response(setup_option, country_code):
-    """Проверка фильтрации при разрешенных кодах стран
+    """
+    Проверка фильтрации при разрешенных кодах стран
 
     :param setup_option: Установочные параметры
     :type setup_option: dict
@@ -46,11 +47,11 @@ def test_01_accept_positive_response(setup_option, country_code):
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    EndPoint: {api_response.url}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f" EndPoint: {api_url}?country_code={country_code}\n"
+                        f" EndPoint: {api_response.url}\n"
+                        f" Status: {api_response.status_code}\n"
+                        f" Body: {json_content}\n"
+                        f"    ")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
 
     relative_path = join('../datasets', 'json_valid_schemas_for_test.json')

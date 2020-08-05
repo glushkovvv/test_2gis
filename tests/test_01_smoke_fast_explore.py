@@ -43,10 +43,11 @@ def test_01_smoke_status_code(setup_option, json_params):
     api_url = setup_option['site_url']
     request_params = json_params
     api_response = get_response(api_url, request_params)
+    json_content = json.loads(api_response.content.decode('utf-8'))
     testing_message = (f"  EndPoint: {api_response.url}\n"
                        f"  Status:   {api_response.status_code}\n"
                        f"  Headers:  {api_response.headers}\n"
-                       f"  Content:  {api_response.content}\n")
+                       f"  Content:  {json_content}\n")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + testing_message
 
 
@@ -70,9 +71,9 @@ def test_01_smoke_valid_json_schema(setup_option, json_params):
     api_response = get_response(api_url, request_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
     testing_message = (f"  EndPoint: {api_response.url}\n"
-                       f"  Status: {api_response.status_code}\n"
-                       f"  Headers: {api_response.headers}\n"
-                       f"  Content: {api_response.content}")
+                       f"  Status:   {api_response.status_code}\n"
+                       f"  Headers:  {api_response.headers}\n"
+                       f"  Content:  {json_content}")
     relative_path = join('../datasets', 'json_valid_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
     schema = load_json_schema(filename=filename)
@@ -103,7 +104,7 @@ def test_01_smoke_not_empty(setup_option, json_params):
     testing_message = (f"  EndPoint: {api_response.url}\n"
                        f"  Status:   {api_response.status_code}\n"
                        f"  Headers:  {api_response.headers}\n"
-                       f"  Content:  {api_response.content}")
+                       f"  Content:  {json_content}")
     if json_content.get("items"):
         check = True
     else:
@@ -129,9 +130,11 @@ def test_01_smoke_required_header(setup_option, json_params):
     api_url = setup_option['site_url']
     request_params = json_params
     api_response = get_response(api_url, request_params)
+    json_content = json.loads(api_response.content.decode('utf-8'))
     testing_message = (f"  EndPoint: {api_response.url}\n"
                        f"  Status:   {api_response.status_code}\n"
-                       f"  Headers:  {api_response.headers}")
+                       f"  Headers:  {api_response.headers}"
+                       f"  Content:  {json_content}")
     if api_response.headers.get("Content-Type").lower() == "application/json; charset=utf-8":
         check = True
     else:

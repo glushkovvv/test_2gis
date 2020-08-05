@@ -4,7 +4,7 @@ test_01_accept_negative_country_code_upper
 ~~~~~~~~~~~~~~
 
 The 2GIS API Test
-Check negative country_code
+Check negative country_code upper character
 
 :author: Vadim Glushkov
 :copyright: Copyright 2019, The2GIS API Test"
