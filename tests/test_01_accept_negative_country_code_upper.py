@@ -50,10 +50,10 @@ def test_13_accept_negative_country_upper_latin_one_char(setup_option, country_c
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -86,10 +86,10 @@ def test_14_accept_negative_country_upper_latin_two_chars(setup_option, country_
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -122,10 +122,10 @@ def test_15_accept_negative_country_upper_latin_three_chars(setup_option, countr
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -158,10 +158,10 @@ def test_16_accept_negative_country_upper_cyrillic_one_char(setup_option, countr
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -194,10 +194,10 @@ def test_17_accept_negative_country_upper_cyrillic_chars(setup_option, country_c
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -230,10 +230,10 @@ def test_18_accept_negative_country_upper_cyrillic_three_chars(setup_option, cou
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -266,10 +266,10 @@ def test_19_accept_negative_country_upper_mix_two_chars(setup_option, country_co
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -302,10 +302,10 @@ def test_20_accept_negative_country_upper_mix_three_chars(setup_option, country_
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -338,10 +338,10 @@ def test_21_accept_negative_country_mix_latin_two_chars(setup_option, country_co
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -374,10 +374,10 @@ def test_22_accept_negative_country_three_mix_latin_chars(setup_option, country_
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -410,10 +410,10 @@ def test_23_accept_negative_country_mix_cyrillic_two_chars(setup_option, country
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
@@ -446,10 +446,10 @@ def test_24_accept_negative_country_mix_cyrillic_three_chars(setup_option, count
     }
     api_response = get_response(api_url, setup_params)
     json_content = json.loads(api_response.content.decode('utf-8'))
-    response_message = f"""EndPoint: {api_url}?country_code={country_code}
-    Status: {api_response.status_code}
-    Body: {json_content}
-    """
+    response_message = (f"  EndPoint: {api_url}?country_code={country_code}\n"
+                        f"  Status:   {api_response.status_code}\n"
+                        f"  Headers:  {api_response.headers}\n"
+                        f"  Body:     {json_content}")
     assert api_response.status_code == 200, f"""Статус {api_response.status_code} != 200\r\n""" + response_message
     relative_path = join('../datasets', 'json_error_schemas_for_test.json')
     filename = join(dirname(__file__), relative_path)
